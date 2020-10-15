@@ -6,6 +6,7 @@
 -- Generation Time: Oct 15, 2020 at 07:52 PM
 -- Server version: 10.3.23-MariaDB-0+deb10u1
 -- PHP Version: 7.3.19-1~deb10u1
+BEGIN;   
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -22,22 +23,46 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `blocked`
---
 
-CREATE TABLE `blocked` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `ip` varchar(45) NOT NULL,
-  `user_agent` text DEFAULT NULL,
-  `port` int(11) DEFAULT NULL,
-  `lang` text DEFAULT NULL,
-  `fail_count` int(10) UNSIGNED NOT NULL DEFAULT 1,
+
+CREATE TABLE `addresses` (
+  `ip` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` text DEFAULT NULL,
+  `country_code` varchar(10) DEFAULT NULL,
+  `regionName` text DEFAULT NULL,
+  `city` text DEFAULT NULL,
+  `zip` text DEFAULT NULL,
+  `lat` text DEFAULT NULL,
+  `lon` text DEFAULT NULL,
+  `timezone` text DEFAULT NULL,
+  `isp` text DEFAULT NULL,
+  `as` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+ALTER TABLE `addresses`
+  ADD PRIMARY KEY (`ip`);
 --
--- Indexes for table `blocked`
+-- Table structure for table `visits`
 --
-ALTER TABLE `blocked`
+CREATE TABLE `visits` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `ip` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_agent` text DEFAULT NULL,
+  `port` int(11) DEFAULT NULL,
+  `lang` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+ALTER TABLE `visits`
   ADD PRIMARY KEY (`id`);
+  
+ALTER TABLE `visits`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `visits`
+  ADD CONSTRAINT `visit_user_ip_foreign` FOREIGN KEY (`ip`) REFERENCES `addresses` (`ip`) ON DELETE CASCADE;
+
+COMMIT;   
