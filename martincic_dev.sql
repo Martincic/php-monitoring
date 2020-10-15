@@ -29,14 +29,14 @@ CREATE TABLE `addresses` (
   `ip` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `country` text DEFAULT NULL,
   `country_code` varchar(10) DEFAULT NULL,
-  `regionName` text DEFAULT NULL,
+  `region_name` text DEFAULT NULL,
   `city` text DEFAULT NULL,
   `zip` text DEFAULT NULL,
   `lat` text DEFAULT NULL,
   `lon` text DEFAULT NULL,
   `timezone` text DEFAULT NULL,
   `isp` text DEFAULT NULL,
-  `as` text DEFAULT NULL,
+  `asp` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

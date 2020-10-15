@@ -6,13 +6,24 @@ $link = connect();
 
 if(!$exists)
 {
-	echo "NE POSTOJIM!";
-	$stmt = $link->prepare("INSERT INTO addresses (`ip`) VALUES (?, ?);");
-	$stmt->bind_param("si", $ip, $count);
-
+	
+	$geolocation = getLocation("188.252.190.38");
+	print_r($geolocation);
+	$stmt = $link->prepare("INSERT INTO addresses (ip, country, country_code, region_name, city, zip, lat, lon, timezone, isp, asp) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
+	$stmt->bind_param("sssssssssss", $ip, $country, $country_code, $region_name, $city, $zip, $lat, $lon, $timezone, $isp, $asp);
+	
 	// set parameters and execute
 	$ip = $_SERVER['REMOTE_ADDR'];
-	$count = 0;
+	$country = $geolocation->country ?? null;
+	$country_code = $geolocation->country_code ?? null;
+	$region_name = $geolocation->region_name ?? null;
+	$city = $geolocation->city ?? null;
+	$zip = $geolocation->zip ?? null;
+	$lat = $geolocation->lat ?? null;
+	$lon = $geolocation->lon ?? null;
+	$timezone = $geolocation->timezone ?? null;
+	$isp = $geolocation->isp ?? null;
+	$asp = $geolocation->as ?? null;
 
 	$stmt->execute();
 	$stmt->close();
@@ -30,8 +41,3 @@ if(!$exists)
 	$stmt->execute();
 	$stmt->close();
 $link->close();
-
-#echo getLocation($_SERVER['REMOTE_ADDR']);
-$geolocation = getLocation($_SERVER['ADDR']);
-print_r($geolocation);
-0?>
