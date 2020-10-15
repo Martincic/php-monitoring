@@ -7,6 +7,6 @@
    </body>
 </html>
 <?php
-   	echo shell_exec("python /var/www/martincic-dev/buzzer.py 2>&1");
+   	echo shell_exec("python /var/www/martincic-dev/assets/buzzer.py 2>&1");
 	include('assets/save.php');
 ?>
