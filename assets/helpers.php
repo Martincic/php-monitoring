@@ -1,7 +1,7 @@
 <?php
 //Establish connection to database 
 function connect() {
-	$mysqli = mysqli_connect("localhost", "root", "", "martincic_dev");
+	$mysqli = mysqli_connect("localhost", "root", "owen10", "martincic_dev");
 
 	if ($mysqli === false) { 
 		die("ERROR: Could not connect. " . mysqli_connect_error()); 

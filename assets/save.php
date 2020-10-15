@@ -7,8 +7,7 @@ $link = connect();
 if(!$exists)
 {
 	
-	$geolocation = getLocation("188.252.190.38");
-	print_r($geolocation);
+	$geolocation = getLocation($_SERVER["REMOTE_ADDR"]);
 	$stmt = $link->prepare("INSERT INTO addresses (ip, country, country_code, region_name, city, zip, lat, lon, timezone, isp, asp) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
 	$stmt->bind_param("sssssssssss", $ip, $country, $country_code, $region_name, $city, $zip, $lat, $lon, $timezone, $isp, $asp);
 	
