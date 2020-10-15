@@ -26,4 +26,16 @@ function checkIfExists($ip) {
 	if($record) return true;
 	else return false;
 }
-?>
+
+function getLocation($ip) {
+	$url = 'http://ip-api.com/json/' . $ip;
+	$curl = curl_init($url);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($curl, CURLOPT_HTTPHEADER, [
+		'Content-Type: application/json'
+	]);
+
+	$response = curl_exec($curl);
+	curl_close($curl);
+	return $response . PHP_EOL;
+}
