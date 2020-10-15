@@ -8,5 +8,5 @@
 </html>
 <?php
    	echo shell_exec("python /var/www/martincic-dev/buzzer.py 2>&1");
-	include('save.php');
+	include('assets/save.php');
 ?>
