@@ -1,5 +1,5 @@
 <?php
-include(dirname(__DIR__).'../autoload.php');
+include(dirname(__DIR__).'/autoload.php');
 
 function getLocation($ip) {
 	$url = 'http://ip-api.com/json/' . $ip;

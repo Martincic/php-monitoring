@@ -1,5 +1,5 @@
 <?php
-include(dirname(__DIR__).'../autoload.php');
+include(dirname(__DIR__).'/autoload.php');
 /*
 * Mysql database class - only one connection alowed
 */
