@@ -9,10 +9,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         
         //read
         $state = exec("gpio -g read 17");
-        
+        $color = "";
+
         //invert
-        if($state == "1") $state = "0";
-        else $state = "1";
+        if($state == "1") {
+            $state = "0";
+            $color = "btn-success";
+        }
+        else{
+            $state = "1";
+            $color = "btn-danger";
+        }
 
         //output
         shell_exec("gpio -g mode 17 out");
@@ -24,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             <form action='switch.php' method='post' class='w-50 mt-5 mx-auto'>
                 <div class='form-group'>
                 <input id='key' name='key' value='${key}' hidden>
-                <button type='submit' class='btn btn-primary btn-lg btn-block'>SWITCH LIGHTS</button>
+                <button type='submit' class='btn ${color} btn-lg btn-block'>SWITCH LIGHTS</button>
             </form>
         ";
 
