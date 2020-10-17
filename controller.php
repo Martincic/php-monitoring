@@ -1,5 +1,6 @@
 <?php
 include('autoload.php');
+include('assets/include-bootstrap.php');
 
 if($_SERVER['REQUEST_METHOD'] == "POST") 
 {
@@ -7,9 +8,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     {
         $key = env('key');
         echo "
-            <form action='switch.php' method='post'>
-                <input id='key' name='key' value='${key}'>
-                <input type='submit' value='SWITCH THE LIGHTS'>
+            <form action='switch.php' method='post' class='w-50 mt-5 mx-auto'>
+                <div class='form-group'>
+                <input id='key' name='key' value='${key}' hidden>
+                <button type='submit' class='btn btn-primary btn-lg btn-block'>SWITCH LIGHTS</button>
             </form>
         ";
 
