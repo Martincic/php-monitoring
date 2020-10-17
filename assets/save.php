@@ -1,8 +1,11 @@
 <?php
-include('helpers.php');
+include(__DIR__.'/helpers.php');
+include(__DIR__.'/../database/database.php');
 
-$exists = checkIfExists($_SERVER["REMOTE_ADDR"]);
-$link = connect();
+$db = Database::getInstance();
+
+$exists = $db->checkIfExists($_SERVER["REMOTE_ADDR"]);
+$link = $db->getConnection();
 
 if(!$exists)
 {
@@ -39,4 +42,4 @@ if(!$exists)
 
 	$stmt->execute();
 	$stmt->close();
-$link->close();
+$link = $db->closeConnection();
