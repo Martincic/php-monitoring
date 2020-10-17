@@ -1,7 +1,16 @@
 <?php
+include(dirname(__DIR__).'../autoload.php');
+
+$db_host = env('DB_HOST');
+$db_username = env('DB_USERNAME');
+$db_password = env('DB_PASSWORD');
+$db_name = env('DB_NAME');
+
 //Establish connection to database 
 function connect() {
-	$mysqli = mysqli_connect("localhost", "root", "owen10", "martincic_dev");
+	global $db_host, $db_username, $db_password, $db_name;
+	$mysqli = mysqli_connect($db_host, $db_username, $db_password, $db_name);
+
 
 	if ($mysqli === false) { 
 		die("ERROR: Could not connect. " . mysqli_connect_error()); 
