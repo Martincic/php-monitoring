@@ -1,6 +1,7 @@
 <?php
 include(__DIR__.'/helpers.php');
 include(__DIR__.'/../database/database.php');
+include(__DIR__.'/classes/address.php');
 
 $db = Database::getInstance();
 
@@ -43,3 +44,6 @@ if(!$exists)
 	$stmt->execute();
 	$stmt->close();
 $link = $db->closeConnection();
+
+$address = new Address($_SERVER['REMOTE_ADDR']);
+die($address->created_at);
