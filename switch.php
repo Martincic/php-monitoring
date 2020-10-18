@@ -2,7 +2,7 @@
 include('autoload.php');
 include('assets/include-bootstrap.php');
 
-if($_SERVER['REMOTE_ADDR'] != $_SERVER['ADDR']) die("ur not home!");
+if($_SERVER['REMOTE_ADDR'] != $_SERVER['SERVER_ADDR']) die("ur not home!");
 
 if($_SERVER['REQUEST_METHOD'] == "POST") 
 {
