@@ -1,7 +1,9 @@
 <?php
 include('autoload.php');
 include('assets/include-bootstrap.php');
-
+echo "my: " . $_SERVER['REMOTE_ADDR'];
+echo "<br>";
+echo "ur: " .$_SERVER['SERVER_ADDR'];
 if($_SERVER['REMOTE_ADDR'] == $_SERVER['SERVER_ADDR'])
 {
     if($_SERVER['REQUEST_METHOD'] == "POST") 
