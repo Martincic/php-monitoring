@@ -32,18 +32,18 @@ if(!$exists)
 	$stmt->close();
 }
 	// prepare and bind
-	$stmt = $link->prepare("INSERT INTO visits (`ip`, `user_agent`, `port`, `lang`) VALUES (?, ?, ?, ?);");
-	$stmt->bind_param("ssis", $ip, $user_agent, $port, $language);
+	$stmt = $link->prepare("INSERT INTO visits (`ip`, `request_method`, `slug`, `user_agent`, `port`, `lang`) VALUES (?, ?, ?, ?, ?, ?);");
+	$stmt->bind_param("ssssis", $ip, $request_method, $slug, $user_agent, $port, $language);
 	
 	// set parameters and execute
 	$ip = $_SERVER['REMOTE_ADDR'];
 	$user_agent = $_SERVER['HTTP_USER_AGENT'];
 	$port = $_SERVER['REMOTE_PORT'];
 	$language = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+	$request_method = $_SERVER['REQUEST_METHOD'];
+	$slug = $_SERVER['REQUEST_URI'];
 
 	$stmt->execute();
 	$stmt->close();
 $link = $db->closeConnection();
 
-$address = new Address($_SERVER['REMOTE_ADDR']);
-die($address->created_at);
