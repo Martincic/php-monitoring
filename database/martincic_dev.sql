@@ -3,10 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 15, 2020 at 07:52 PM
+-- Generation Time: Oct 22, 2020 at 12:33 PM
 -- Server version: 10.3.23-MariaDB-0+deb10u1
 -- PHP Version: 7.3.19-1~deb10u1
-BEGIN;   
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,10 +22,12 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
-
+--
+-- Table structure for table `addresses`
+--
 
 CREATE TABLE `addresses` (
-  `ip` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ip` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `country` text DEFAULT NULL,
   `country_code` varchar(10) DEFAULT NULL,
   `region_name` text DEFAULT NULL,
@@ -40,29 +41,60 @@ CREATE TABLE `addresses` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-ALTER TABLE `addresses`
-  ADD PRIMARY KEY (`ip`);
+--
+-- Table structure for table `login_attempts`
+--
+
+CREATE TABLE `login_attempts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `ip` varchar(45) NOT NULL,
+  `username` text DEFAULT NULL,
+  `password` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `visits`
 --
+
 CREATE TABLE `visits` (
   `id` int(10) UNSIGNED NOT NULL,
-  `ip` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ip` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `request_method` text NOT NULL,
+  `slug` text NOT NULL,
   `user_agent` text DEFAULT NULL,
   `port` int(11) DEFAULT NULL,
   `lang` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Indexes for table `addresses`
+--
+ALTER TABLE `addresses`
+  ADD PRIMARY KEY (`ip`);
 
-ALTER TABLE `visits`
+--
+-- Indexes for table `login_attempts`
+--
+ALTER TABLE `login_attempts`
   ADD PRIMARY KEY (`id`);
-  
-ALTER TABLE `visits`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
+--
+-- Indexes for table `visits`
+--
+ALTER TABLE `visits`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `visit_user_ip_foreign` (`ip`);
+
+--
+-- Constraints for table `visits`
+--
 ALTER TABLE `visits`
   ADD CONSTRAINT `visit_user_ip_foreign` FOREIGN KEY (`ip`) REFERENCES `addresses` (`ip`) ON DELETE CASCADE;
 
-COMMIT;   
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
