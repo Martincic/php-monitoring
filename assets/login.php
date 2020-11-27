@@ -12,33 +12,31 @@
     //invert
     if($state1 == "1") {
         $state1 = "0";
-        $color1 = "btn-success";
+        $color1 = "btn-danger";
     }
     else{
         $state1 = "1";
-        $color1 = "btn-danger";
+        $color1 = "btn-success";
     }
 
     //invert
     if($state2 == "1") {
         $state2 = "0";
-        $color2 = "btn-success";
+        $color2 = "btn-danger";
     }
     else{
         $state2 = "1";
-        $color2 = "btn-danger";
+        $color2 = "btn-success";
     }
 ?>
 
 <form action='switch.php' method='post' class='w-50 mt-5 mx-auto'>
-    <div class='form-group'>
     <input id='key' name='key' value='<?php echo $key ?>' hidden>
     <input id='light' name='light' value='1' hidden>
     <button type='submit' class='btn <?php echo $color1 ?> btn-lg btn-block'>Strop svjetlo</button>
 </form>
 
 <form action='switch.php' method='post' class='w-50 mt-5 mx-auto'>
-    <div class='form-group'>
     <input id='key' name='key' value='<?php echo $key ?>' hidden>
     <input id='light' name='light' value='2' hidden>
     <button type='submit' class='btn <?php echo $color2 ?> btn-lg btn-block'>Stol svijetlo</button>
