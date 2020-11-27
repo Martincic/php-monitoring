@@ -12,6 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
         shell_exec("gpio -g mode ". $num."7 out");
         shell_exec("gpio -g write ". $num."7 ".$state);   
+        
         //loop back here
         $key = env('key'); 
         include('assets/saveLogin.php');
