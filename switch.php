@@ -6,33 +6,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 {
     if($_POST['key'] == env('key')) 
     {
-        //read
-        $state = exec("gpio -g read 27");
-        $color = "";
-
-        //invert
-        if($state == "1") {
-            $state = "0";
-            $color = "btn-success";
-        }
-        else{
-            $state = "1";
-            $color = "btn-danger";
-        }
-
+        $num = $_POST['light'];
         //output
-        shell_exec("gpio -g mode 27 out");
-        shell_exec("gpio -g write 27 ".$state);   
+        $state = exec("gpio -g read ". $num."7");
 
+        shell_exec("gpio -g mode ". $num."7 out");
+        shell_exec("gpio -g write ". $num."7 ".$state);   
         //loop back here
         $key = env('key'); 
-        echo "
-            <form action='switch.php' method='post' class='w-50 mt-5 mx-auto'>
-                <div class='form-group'>
-                <input id='key' name='key' value='${key}' hidden>
-                <button type='submit' class='btn ${color} btn-lg btn-block'>SWITCH LIGHTS</button>
-            </form>
-        ";
+        include('assets/saveLogin.php');
 
     } else die("nothing here");
 }

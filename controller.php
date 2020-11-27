@@ -1,26 +1,14 @@
 <?php
 include('autoload.php');
 include('assets/include-bootstrap.php');
-include('assets/save.php');
+#include('assets/save.php');
 
-ini_set('display_errors', '1');
-   ini_set('display_startup_errors', '1');
-   error_reporting(E_ALL);
 
 if($_SERVER['REQUEST_METHOD'] == "POST") 
 {
     if(($_POST['username'] == env('username')) && ($_POST['password'] == env('password'))) 
     {
-        $key = env('key');
-        echo "
-            <form action='switch.php' method='post' class='w-50 mt-5 mx-auto'>
-                <div class='form-group'>
-                <input id='key' name='key' value='${key}' hidden>
-                <button type='submit' class='btn btn-primary btn-lg btn-block'>SWITCH LIGHTS</button>
-            </form>
-        ";
-
-
+        include_once('assets/login.php');
     } else {
         include('assets/saveLogin.php');
         //echo shell_exec("python /var/www/martincic-dev/assets/alert.py 2>&1");
