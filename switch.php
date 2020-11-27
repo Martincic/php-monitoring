@@ -7,9 +7,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     if($_POST['key'] == env('key')) 
     {
         $num = $_POST['light'];
-        echo "gpio -g read ". $num."7";
         //output
         $state = exec("gpio -g read ". $num."7");
+        //invert
+        if($state == "1") {
+            $state = "0";
+        }
+        else{
+            $state = "1";
+        }
 
         shell_exec("gpio -g mode ". $num."7 out");
         shell_exec("gpio -g write ". $num."7 ".$state);   
