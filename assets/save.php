@@ -46,4 +46,4 @@ if(!$exists)
 	$stmt->execute();
 	$stmt->close();
 $link = $db->closeConnection();
-
+//shell_exec("python /var/www/martincic-dev/assets/buzzer.py 2>&1");

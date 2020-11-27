@@ -6,9 +6,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 {
     if($_POST['key'] == env('key')) 
     {
-        
         //read
-        $state = exec("gpio -g read 17");
+        $state = exec("gpio -g read 27");
         $color = "";
 
         //invert
@@ -22,8 +21,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         }
 
         //output
-        shell_exec("gpio -g mode 17 out");
-        shell_exec("gpio -g write 17 ".$state);   
+        shell_exec("gpio -g mode 27 out");
+        shell_exec("gpio -g write 27 ".$state);   
 
         //loop back here
         $key = env('key'); 

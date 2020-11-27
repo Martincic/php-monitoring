@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
     } else {
         include('assets/saveLogin.php');
-        echo shell_exec("python /var/www/martincic-dev/assets/alert.py 2>&1");
+        //echo shell_exec("python /var/www/martincic-dev/assets/alert.py 2>&1");
     }
 }
 die("nothing here");
