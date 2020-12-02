@@ -1,0 +1,27 @@
+<?php
+include(__DIR__.'/helpers.php');
+include(__DIR__.'/../database/database.php');
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$db = Database::getInstance();
+$link = $db->getConnection();
+$sql = "SELECT temp, humidity FROM temperature ORDER BY id DESC LIMIT 0, 1";
+$result = $link->query($sql);
+
+$temp = $result->fetch_assoc();
+
+$db->closeConnection();
+?>
+<div type="button" class="btn btn-primary">
+  Temperature <span class="badge badge-light">
+<div class="progress">
+  <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: "<?php echo $temp['temp']+15 ?>%" aria-valuenow=""<?php echo $temp['temp'] ?>" aria-valuemin="5" aria-valuemax="35"></div>
+</div>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: "<?php echo $temp['humidity'] ?>%"></div>
+</div>
+</span>
+</div>

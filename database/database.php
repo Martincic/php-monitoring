@@ -25,9 +25,9 @@ class Database {
 	// Constructor
 	private function __construct() {
         $this->_host = env('DB_HOST');
-        $this->_username = env('DB_USERNAME');
-        $this->_password = env('DB_PASSWORD');
-        $this->_database = env('DB_NAME');
+        $this->_username = 'root';
+        $this->_password = 'owen10';
+        $this->_database = 'martincic_dev';
 	}
 
 	// Get mysqli connection
