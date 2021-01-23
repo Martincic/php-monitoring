@@ -64,13 +64,14 @@
 <form action='switch.php' method='post' class='w-50 mt-5 mx-auto'>
     <input id='key' name='key' value='<?php echo $key ?>' hidden>
     <input id='control' name='control' value='1' hidden>
-<label for="temp">Stvarna temperatura: <span id='stvarna' class='blinking'><?php include('read_real.php') ?></span>°C</label>
-<label for="temp">Namjestena temperatura: <span id='odabranaTemp'><?php include('read_temp.php') ?></span>°C</label>
+<label for="temp">Odabrana temperatura: <span id='odabranaTemp'><?php include('read_temp.php') ?></span>°C</label>
 <div class="slidecontainer">
   <input type="range" min="15" max="30" step="0.1" class="slider mb-3" id="range" name="range">
 </div>
 <button type='submit' class='btn btn-primary btn-lg btn-block'>Namjesti temp</button>
 </form>
+<label for="temp">Stvarna temperatura: <span id='stvarna' class='blinking'><?php include('read_real.php') ?></span>°C</label>
+<label for="temp">Stvarna vlaga: <span id='vlaga' class='blinking'><?php include('api/humidity.php') ?></span>%</label>
 
 <script>
 var slider = document.getElementById("temp");
@@ -95,8 +96,8 @@ var output = document.getElementById("odabranaTemp");
         return new Promise(resolve => setTimeout(resolve, ms));
     }
     
-    function updateData(data) {
-        document.getElementById('stvarna').innerHTML = data;
+    function updateData(element, data) {
+        document.getElementById(element).innerHTML = data;
     }
     
     async function reloadData() 
@@ -105,14 +106,21 @@ var output = document.getElementById("odabranaTemp");
             // Send request
             request.open('GET', 'https://martincic.dev/api/temp.php', true);
             request.send();
-            
+            request.open('GET', 'https://martincic.dev/api/humidity.php', true);
+            request.send();
+
             console.log('request sent!');
             await sleep(2000);
         }
     }
     request.onload = function () {
         // Do something with the retrieved data ( found in xmlhttp.response )
-        updateData(this.responseText);
+        if(this.responseURL == 'https://martincic.dev/api/temp.php') {
+            updateData('stvarna', this.responseText);
+        }
+        else {
+            updateData('vlaga', this.responseText);
+        }
     };
 
   reloadData();
