@@ -97,17 +97,17 @@ var output = document.getElementById("odabranaTemp");
     }
     
     function updateData(data) {
-        document.getElementById('stvarna').innerHTML = data.temp;
+        document.getElementById('stvarna').innerHTML = data;
     }
     
     async function reloadData() 
     {
         while(true){
             // Send request
-            request.open('GET', 'https://martincic.dev/api/temp-humidity.php', true);
+            request.open('GET', 'https://martincic.dev/api/temp.php', true);
             request.send();
             
-            updateData(JSON.parse(request.responseText));
+            updateData(request.responseText);
             console.log('request sent!');
             await sleep(2000);
         }

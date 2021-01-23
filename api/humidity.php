@@ -11,19 +11,12 @@ if($_SERVER['REQUEST_METHOD'] == "GET")
         // echo "KEY MATCHING";
         $db = Database::getInstance();
         $link = $db->getConnection();
-        $sql = "SELECT temp, humidity FROM temperature ORDER BY id DESC LIMIT 0, 1";
+        $sql = "SELECT humidity FROM temperature ORDER BY id DESC LIMIT 0, 1";
         $result = $link->query($sql);
 
-        $temp = $result->fetch_assoc();
+        $humidity = $result->fetch_assoc();
 
         $link = $db->closeConnection();
 
-        $response  = [
-                'temp' => $temp['temp'],
-                'humid' => $temp['humidity']
-        ];
-
-        header('Content-type: application/json');
-        
-        echo $response;
+        echo $humidity['humidity'];
 }
