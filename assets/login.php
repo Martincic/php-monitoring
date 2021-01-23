@@ -97,8 +97,7 @@ var output = document.getElementById("odabranaTemp");
     }
     
     function updateData() {
-        // document.getElementById('stvarna').innerHTML = request.body;
-        console.log(request);
+        document.getElementById('stvarna').innerHTML = request.body;
     }
     
     async function reloadData() 
@@ -107,10 +106,9 @@ var output = document.getElementById("odabranaTemp");
             // Send request
             request.open('GET', 'https://martincic.dev/api/temp-humidity.php', true);
             request.send();
-            updateData();
+            updateData(JSON.parse(request.response));
+            console.log('request sent!');
             await sleep(2000);
-            console.log('Request sent!');
-            console.log(request.body);
         }
     }
 
