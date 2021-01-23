@@ -108,8 +108,8 @@ var output = document.getElementById("odabranaTemp");
             request.send();
             var text = '{ "temp":"John", "age":"function () {return 30;}", "city":"New York"}';
             var obj = JSON.parse(text);
-            let data = JSON.parse(request.responseText);
-            updateData(data);
+            // let data = JSON.parse(request.responseText);
+            updateData(obj);
             console.log('request sent!');
             await sleep(2000);
         }
