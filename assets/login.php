@@ -113,10 +113,10 @@ var output = document.getElementById("odabranaTemp");
             // Send request
             request.open('GET', 'https://martincic.dev/api/temp.php', true);
             request.send();
-            // await sleep(2000);
+            await sleep(1000);
             request.open('GET', 'https://martincic.dev/api/humidity.php', true);
             request.send();
-            await sleep(2000);
+            await sleep(1000);
 
             console.log('request sent!');
         }
