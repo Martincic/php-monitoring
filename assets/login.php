@@ -109,8 +109,8 @@ var output = document.getElementById("odabranaTemp");
     function updateData(element, data) {
         document.getElementById(element).innerHTML = data;
         document.getElementById(element+'Progress').setAttribute("aria-valuenow", data);
-        document.getElementById(element).removeAttribute("style");
-        document.getElementById(element).setAttribute("style", `width:${data}%`);
+        document.getElementById(element+'Progress').removeAttribute("style");
+        document.getElementById(element+'Progress').setAttribute("style", `width:${data}%`);
     }
     
     async function reloadData() 
