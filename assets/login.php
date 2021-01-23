@@ -110,7 +110,7 @@ var output = document.getElementById("odabranaTemp");
             updateData();
             await sleep(2000);
             console.log('Request sent!');
-            console.log(request.response);
+            console.log(request.body);
         }
     }
 
