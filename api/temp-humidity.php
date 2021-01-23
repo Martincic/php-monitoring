@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 {
     if($_POST['key'] === 'fTjWnZr4u7x!A%D*G-KaNdRgUkXp2s5v') 
     {
-        echo "KEY MATCHING";
+        // echo "KEY MATCHING";
 	$db = Database::getInstance();
 	$link = $db->getConnection();
         $sql = "SELECT temp, humidity FROM temperature ORDER BY id DESC LIMIT 0, 1";
@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 	$link = $db->closeConnection();
         
-        return json_encode([
+        echo json_encode([
                 'temp' => $temp['temp'],
                 'humid' => $temp['humidity']
         ]);
