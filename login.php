@@ -16,5 +16,5 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         ";
 
 
-    } else die("nothing here");
-}else die("nothing here");
+    } else die();
+}else die();

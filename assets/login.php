@@ -70,8 +70,18 @@
 </div>
 <button type='submit' class='btn btn-primary btn-lg btn-block'>Namjesti temp</button>
 </form>
-<label for="temp">Stvarna temperatura: <span id='stvarna' class='blinking'><?php include('read_real.php') ?></span>°C</label>
-<label for="temp">Stvarna vlaga: <span id='vlaga' class='blinking'><?php include('api/humidity.php') ?></span>%</label>
+
+<div class="d-flex flex-column align-items-center justify-content-center mx-auto w-50">
+    <label for="temp">Stvarna  <span id='stvarna' class='blinking'><?php  ?></span></label>
+
+    <div class="progress">
+        Stvarna temperatura:<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50" id='stvarnaProgress'><span id='stvarna'><?php include('api/temp.php') ?></span>°C</div>
+    </div>
+
+    <div class="progress">
+        Stvarna vlaga:<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" id='vlagaProgress'><span id='vlaga'><?php include('api/humidity.php') ?></span>%</div>
+    </div>
+</div>
 
 <script>
 var slider = document.getElementById("temp");
@@ -98,6 +108,7 @@ var output = document.getElementById("odabranaTemp");
     
     function updateData(element, data) {
         document.getElementById(element).innerHTML = data;
+        document.getElementById(element+'Progress').setAttribute("aria-valuenow", 6); ;
     }
     
     async function reloadData() 

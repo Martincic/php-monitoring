@@ -14,5 +14,5 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         //echo shell_exec("python /var/www/martincic-dev/assets/alert.py 2>&1");
     }
 }
-die("nothing here");
+die();
 ?>
