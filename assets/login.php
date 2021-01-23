@@ -1,5 +1,5 @@
 <?php
-    
+    echo 8;
     $key = env('key');
 
     //read

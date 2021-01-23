@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             echo 3;
             $temp=$_POST['range'];
             $status = shell_exec("python3 settemp.py ".$temp);
-            echo "Temp namjestena na ". $temp. " stupnja. STATUS: ".$status;
+            //echo "Temp namjestena na ". $temp. " stupnja. STATUS: ".$status;
             include('setConfig.php');
 	    }
         $num = $_POST['light'] ?? 0;
