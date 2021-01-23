@@ -25,7 +25,3 @@ $db->closeConnection();
 </div>
 </span>
 </div>
-
-<script>
-  
-<script>
