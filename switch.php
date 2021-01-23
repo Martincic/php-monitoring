@@ -39,10 +39,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         shell_exec("gpio -g write ". $num." ".$state);   
         
         //loop back here
-        
+        echo 3.5;
         include('assets/login.php');
-        include('assets/saveLogin.php');
         echo 4;
+        include('assets/saveLogin.php');
     }
 }
 
