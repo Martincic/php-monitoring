@@ -86,32 +86,31 @@ var output = document.getElementById("odabranaTemp");
   var request = new XMLHttpRequest()
 
   // Open a new connection, using the GET request on the URL endpoint
-  request.open('GET', 'https://martincic.dev/api/temp-humidity.php', true)
-
+  
   request.onload = function () {
-    // Begin accessing JSON data here
-  }
-
-  // Send request
-  request.send()
-
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
-  function updateData() {
-    document.getElementById('stvarna').innerHTML = request.json().temp;
-    console.log(request);
-    console.log(request.json());
-  }
-
-  async function reloadData() 
-  {
-    request.send();
-    updateData();
-    await sleep(2000);
-    console.log('Request sent!');
-  }
+      // Begin accessing JSON data here
+    }
+    
+    
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    function updateData() {
+        document.getElementById('stvarna').innerHTML = request.json().temp;
+        console.log(request);
+        console.log(request.json());
+    }
+    
+    async function reloadData() 
+    {
+      // Send request
+        request.open('GET', 'https://martincic.dev/api/temp-humidity.php', true);
+        request.send();
+        updateData();
+        await sleep(2000);
+        console.log('Request sent!');
+    }
 
   reloadData();
 
