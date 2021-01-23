@@ -6,7 +6,6 @@ error_reporting(E_ALL);
 include('../assets/helpers.php');
 include('../assets/../database/database.php');
 
-echo "STORED KEY: " . env('key');
 if($_SERVER['REQUEST_METHOD'] == "POST") 
 {
     if($_POST['key'] === 'fTjWnZr4u7x!A%D*G-KaNdRgUkXp2s5v') 
@@ -23,10 +22,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         $stmt->close();
 	$link = $db->closeConnection();
         
-        return [
+        echo [
                 'temp' => $temp['temp'],
                 'humid' => $temp['humidity']
         ];
     }
 }
-echo 'error';
