@@ -20,9 +20,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 	$link = $db->closeConnection();
         
-        return [
+        return json_encode([
                 'temp' => $temp['temp'],
                 'humid' => $temp['humidity']
-        ];
+        ]);
     }
 }
