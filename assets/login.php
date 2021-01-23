@@ -71,16 +71,10 @@
 <button type='submit' class='btn btn-primary btn-lg btn-block'>Namjesti temp</button>
 </form>
 
-<div class="d-flex flex-column align-items-center justify-content-center mx-auto w-50">
-    <p>Stvarna temperatura:</p><br>
-    <div class="progress">
-        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50" id='stvarnaProgress'><span id='stvarna'></span>°C</div>
-    </div>
+<div class="mx-auto w-50">
+    <p>Stvarna temperatura:<span id='stvarna'></span>°C</p><br>
 
-    <p>Stvarna vlaga:</p><br>
-    <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" id='vlagaProgress'><span id='vlaga'></span>%</div>
-    </div>
+    <p>Stvarna vlaga:<span id='vlaga'></span>%</p><br>
 </div>
 
 <script>
@@ -119,11 +113,12 @@ var output = document.getElementById("odabranaTemp");
             // Send request
             request.open('GET', 'https://martincic.dev/api/temp.php', true);
             request.send();
+            await sleep(2000);
             request.open('GET', 'https://martincic.dev/api/humidity.php', true);
             request.send();
+            await sleep(2000);
 
             console.log('request sent!');
-            await sleep(2000);
         }
     }
     request.onload = function () {
