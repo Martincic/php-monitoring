@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 	$link = $db->closeConnection();
         
-        echo [
+        return [
                 'temp' => $temp['temp'],
                 'humid' => $temp['humidity']
         ];
