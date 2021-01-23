@@ -72,14 +72,13 @@
 </form>
 
 <div class="d-flex flex-column align-items-center justify-content-center mx-auto w-50">
-    <label for="temp">Stvarna  <span id='stvarna' class='blinking'><?php  ?></span></label>
-
+    <p>Stvarna temperatura:</p><br>
     <div class="progress">
-        Stvarna temperatura:<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50" id='stvarnaProgress'><span id='stvarna'><?php include('api/temp.php') ?></span>°C</div>
+        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50" id='stvarnaProgress'><span id='stvarna'><?php include('api/temp.php') ?></span>°C</div>
     </div>
-
+    <p>Stvarna vlaga:</p><br>
     <div class="progress">
-        Stvarna vlaga:<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" id='vlagaProgress'><span id='vlaga'><?php include('api/humidity.php') ?></span>%</div>
+        <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" id='vlagaProgress'><span id='vlaga'><?php include('api/humidity.php') ?></span>%</div>
     </div>
 </div>
 
