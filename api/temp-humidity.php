@@ -17,7 +17,8 @@ if($_SERVER['REQUEST_METHOD'] == "GET")
         $temp = $result->fetch_assoc();
 
         $link = $db->closeConnection();
-
+        
+        header('Content-type: application/json');
         echo json_encode([
                 'temp' => $temp['temp'],
                 'humid' => $temp['humidity']
