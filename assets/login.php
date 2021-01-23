@@ -96,8 +96,8 @@ var output = document.getElementById("odabranaTemp");
         return new Promise(resolve => setTimeout(resolve, ms));
     }
     
-    function updateData() {
-        document.getElementById('stvarna').innerHTML = request.body;
+    function updateData(data) {
+        document.getElementById('stvarna').innerHTML = data.temp;
     }
     
     async function reloadData() 
@@ -106,6 +106,8 @@ var output = document.getElementById("odabranaTemp");
             // Send request
             request.open('GET', 'https://martincic.dev/api/temp-humidity.php', true);
             request.send();
+            var text = '{ "temp":"John", "age":"function () {return 30;}", "city":"New York"}';
+            var obj = JSON.parse(text);
             let data = JSON.parse(request.responseText);
             updateData(data);
             console.log('request sent!');
