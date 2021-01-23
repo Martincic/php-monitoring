@@ -107,11 +107,14 @@ var output = document.getElementById("odabranaTemp");
             request.open('GET', 'https://martincic.dev/api/temp.php', true);
             request.send();
             
-            updateData(request.responseText);
             console.log('request sent!');
             await sleep(2000);
         }
     }
+    xmlhttp.onload = function () {
+        // Do something with the retrieved data ( found in xmlhttp.response )
+        updateData(this.responseText);
+    };
 
   reloadData();
 
