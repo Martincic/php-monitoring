@@ -72,9 +72,9 @@
 </form>
 
 <div class="mx-auto w-50">
-    <p>Stvarna temperatura:<span id='stvarna'></span>°C</p><br>
+    <p>Stvarna temperatura:<span id='stvarna'><?php include('../api/temp.php')?></span>°C</p><br>
 
-    <p>Stvarna vlaga:<span id='vlaga'></span>%</p><br>
+    <p>Stvarna vlaga:<span id='vlaga'><?php include('../api/humidity.php')?></span>%</p><br>
 </div>
 
 <script>
@@ -102,9 +102,6 @@ var output = document.getElementById("odabranaTemp");
     
     function updateData(element, data) {
         document.getElementById(element).innerHTML = data;
-        document.getElementById(element+'Progress').setAttribute("aria-valuenow", data);
-        document.getElementById(element+'Progress').removeAttribute("style");
-        document.getElementById(element+'Progress').setAttribute("style", `width:${data}%`);
     }
     
     async function reloadData() 
