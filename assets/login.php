@@ -106,7 +106,8 @@ var output = document.getElementById("odabranaTemp");
             // Send request
             request.open('GET', 'https://martincic.dev/api/temp-humidity.php', true);
             request.send();
-            updateData(JSON.parse(request.response));
+            let data = JSON.parse(request.responseText);
+            updateData(data);
             console.log('request sent!');
             await sleep(2000);
         }
