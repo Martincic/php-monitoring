@@ -1,6 +1,7 @@
 <?php
 include('autoload.php');
 include('assets/include-bootstrap.php');
+echo 0;
 
 error_reporting(E_ALL);
 
