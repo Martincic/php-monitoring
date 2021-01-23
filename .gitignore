@@ -2,3 +2,4 @@ martincic.dev.conf
 testing
 env.php
 setConfig.php
+api/upload-temp.php
