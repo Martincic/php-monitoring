@@ -83,57 +83,34 @@ slider.oninput = function() {
   output.innerHTML = this.value;
 }
 
+  var request = new XMLHttpRequest()
 
-window.addEventListener('load', function()
-{
-    let xhr = null;
+  // Open a new connection, using the GET request on the URL endpoint
+  request.open('GET', 'https://martincic.dev/api/temp-humidity.php', true)
 
-    getXmlHttpRequestObject = function()
-    {
-        if(!xhr)
-        {               
-            // Create a new XMLHttpRequest object 
-            xhr = new XMLHttpRequest();
-        }
-        return xhr;
-    };
+  request.onload = function () {
+    // Begin accessing JSON data here
+  }
 
-    updateLiveData = function()
-    {
-        let now = new Date();
-        // Date string is appended as a query with live data 
-        // for not to use the cached version 
-        let url = 'read_real.php?' + now.getTime();
-        xhr = getXmlHttpRequestObject();
-        xhr.onreadystatechange = evenHandler;
-        // asynchronous requests
-        xhr.open("GET", url, true);
-        // Send the request over the network
-        xhr.send(null);
-    };
+  // Send request
+  request.send()
 
-    updateLiveData();
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
-    function evenHandler()
-    {
-        // Check response is ready or not
-        if(xhr.readyState == 4 && xhr.status == 200)
-        {
-            dataDiv = document.getElementById('stvarna');
-            // Set current data text
-            dataDiv.innerHTML = xhr.responseText;
-            // Update the live data every 1 sec
-            setTimeout(updateLiveData(), 1000);
-            //blink value
-            blinker();
-	}
-    }
-});
+  function updateData() {
+    document.getElementById('stvarna').innerHTML = request.json().temp;
+  }
 
-function blinker() {
-	document.getElementsByClassName("blinking").fadeOut(500);
-	document.getElementsByClassName("blinking").fadeIn(500);
-}
+  async function reloadData() 
+  {
+    request.send();
+    updateData();
+    await sleep(2000);
+  }
+
+  reloadData();
 
 </script>
 
