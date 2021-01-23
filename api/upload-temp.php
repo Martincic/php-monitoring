@@ -10,7 +10,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 {
     if($_POST['key'] === 'fTjWnZr4u7x!A%D*G-KaNdRgUkXp2s5v') 
     {
-        echo "KEY MATCHING";
 	$db = Database::getInstance();
 	$link = $db->getConnection();
         $stmt = $link->prepare("INSERT INTO temperature (temp, humidity) VALUES (?, ?);");
@@ -22,6 +21,5 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         $stmt->execute();
         $stmt->close();
 	$link = $db->closeConnection();
-        echo "SUCCESS";
     }
 }
