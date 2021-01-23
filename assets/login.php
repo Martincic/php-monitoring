@@ -111,7 +111,7 @@ var output = document.getElementById("odabranaTemp");
             await sleep(2000);
         }
     }
-    xmlhttp.onload = function () {
+    request.onload = function () {
         // Do something with the retrieved data ( found in xmlhttp.response )
         updateData(this.responseText);
     };
