@@ -18,12 +18,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     {
         echo 2;
         if(isset($_POST['range'])) {
-		$temp=$_POST['range'];
-		$status = shell_exec("python3 settemp.py ".$temp);
-		echo "Temp namjestena na ". $temp. " stupnja. STATUS: ".$status;
-		include('setConfig.php');
-	}
-	$num = $_POST['light'] ?? 0;
+            echo 3;
+            $temp=$_POST['range'];
+            $status = shell_exec("python3 settemp.py ".$temp);
+            echo "Temp namjestena na ". $temp. " stupnja. STATUS: ".$status;
+            include('setConfig.php');
+	    }
+        $num = $_POST['light'] ?? 0;
 
         $state = exec("gpio -g read ". $num);
         //invert
@@ -33,19 +34,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         else{
             $state = "1";
         }
-
+        
         shell_exec("gpio -g mode ". $num." out");
         shell_exec("gpio -g write ". $num." ".$state);   
-
+        
         //loop back here
-       
-	include('assets/login.php');
-	include('assets/saveLogin.php');
-echo 3;
-       
+        
+        include('assets/login.php');
+        include('assets/saveLogin.php');
+        echo 4;
     }
 }
-echo 4;
 
 ?>
 
