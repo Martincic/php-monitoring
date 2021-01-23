@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Tomas Martinčić</title>
-  <meta content="Tomas Martinčić's web portfolio about a student, electrician, developer and enthusiast. Labin & Istra <3" name="descriptison">
+  <meta content="Tomas Martinčić's web portfolio about a student, electrician, developer and enthusiast. Labin & Istra <3" name="description">
   <meta content="Tomas Martinčić, portfolio, Labin, developer" name="keywords">
   <meta name="robots" content="index, follow">
 
