@@ -4,7 +4,7 @@ include('autoload.php');
     if($_POST['key'] === 'fTjWnZr4u7x!A%D*G-KaNdRgUkXp2s5v') 
     {
        echo 9;
-        $link = new mysqli(env('DB_HOST'), env('DB_USERNAME'), env('pwd'), env('DB_NAME'));
+        $link = new mysqli('localhost', 'root', 'owen10', 'martincic_dev');
         $stmt = $link->prepare("INSERT INTO config (temp) VALUES (?);");
         $stmt->bind_param("s", $temp);
 
