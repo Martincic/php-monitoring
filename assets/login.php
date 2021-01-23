@@ -101,6 +101,8 @@ slider.oninput = function() {
 
   function updateData() {
     document.getElementById('stvarna').innerHTML = request.json().temp;
+    console.log(request);
+    console.log(request.json());
   }
 
   async function reloadData() 
@@ -108,6 +110,7 @@ slider.oninput = function() {
     request.send();
     updateData();
     await sleep(2000);
+    console.log('Request sent!');
   }
 
   reloadData();
