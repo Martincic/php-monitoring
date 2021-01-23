@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 		echo "Temp namjestena na ". $temp. " stupnja. STATUS: ".$status;
 		include('setConfig.php');
 	}
-
+    echo 1;
 	$num = $_POST['light'] ?? 0;
 
         $state = exec("gpio -g read ". $num);
@@ -34,14 +34,18 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
         shell_exec("gpio -g mode ". $num." out");
         shell_exec("gpio -g write ". $num." ".$state);   
+        echo 2;
 
         //loop back here
        
 	include('assets/login.php');
 	include('assets/saveLogin.php');
+echo 3;
        
     }
 }
+echo 4;
+
 ?>
 
 
