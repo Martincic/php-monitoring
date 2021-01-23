@@ -68,7 +68,7 @@
 <label for="temp">Stvarna temperatura: <span id='stvarna' class='blinking'><?php include('read_real.php') ?></span>°C</label>
 <label for="temp">Namjestena temperatura: <span id='odabranaTemp'><?php include('read_temp.php') ?></span>°C</label>
 <div class="slidecontainer">
-  <input type="range" min="15" max="25" step="0.1" class="slider mb-3" id="range" name="range">
+  <input type="range" min="15" max="30" step="0.1" class="slider mb-3" id="range" name="range">
 </div>
 <button type='submit' class='btn btn-primary btn-lg btn-block'>Namjesti temp</button>
 </form>
