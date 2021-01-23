@@ -18,8 +18,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
         $temp = $result->fetch_assoc();
 
-        $stmt->execute();
-        $stmt->close();
 	$link = $db->closeConnection();
         
         echo [
