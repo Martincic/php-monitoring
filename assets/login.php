@@ -97,8 +97,8 @@ var output = document.getElementById("odabranaTemp");
     }
     
     function updateData() {
-        document.getElementById('stvarna').innerHTML = request.body.temp;
-        console.log(request.body);
+        // document.getElementById('stvarna').innerHTML = request.body;
+        console.log(request);
     }
     
     async function reloadData() 
